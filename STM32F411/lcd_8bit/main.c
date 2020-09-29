@@ -10,6 +10,8 @@
 #define RW 	0x40												// 0x40 = 0100 0000
 #define	EN	0x80												// 0x80 = 1000 0000
 
+void delayMs(int delay);
+
 int main(void)
 {
 	
@@ -31,6 +33,28 @@ void FPIO_Init(void)
 
 void LCD_command(unsigned char command)
 {
+	GPIOB->BSRR = (RS | RW) << 16;				// Sets RS = 0, R/W = 0
+	GPIOC->ODR = command;
+	GPIOB->BSRR = EN;
+	delayMs(0);
+	GPIOB->BSRR = EN << 16;								// Clear EN
+}
+
+void LED_data(char data)
+{
 	
 }
+
+void delayMs(int delay)
+{
+	int i;
+	for(; delay > 0; delay--)
+	{
+		for(i = 0; i < 3195; i++)
+		{
+			
+		}
+	}
+}
+
 
