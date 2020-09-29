@@ -25,6 +25,12 @@ void FPIO_Init(void)
 	
 	// Setting data pins - PC0 to PC7 as output
 	GPIOC->MODER |= 0x00005555;						// Sets PC0 - PC7 as output pins
-	
+
+}
+
+
+void LCD_command(unsigned char command)
+{
 	
 }
+
